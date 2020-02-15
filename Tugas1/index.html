@@ -4,7 +4,8 @@
         <style type="text/css">
             .container {
                 width: 100%;
-                justify-items: center;
+                display: flex;
+                flex-direction: column;
             }
             .text-link {
                 text-underline-mode: none;
@@ -13,14 +14,23 @@
             .circle-list {
                 list-style-type: circle;
             }
+            .title {
+                align-self: center;
+            }
+            .photo {
+                align-self: center;
+            }
+            .photo-description {
+                align-self: center;
+            }
         </style>
     </head>
     <body>
         <div class="container">
-            <div title="title">
+            <div class="title">
                 <h1>Pizza Indomie</h1>
             </div>
-            <div title="photo">
+            <div class="photo">
                 <img src="res/img/pizza-mie.jpg" width="200" height="198" alt="Pizza Mie">
             </div>
             <div class="photo-description">
