@@ -3,12 +3,14 @@
 // Server Database Sources
 $host = "localhost";
 
-// User Database Sources
+// User Database Sources Server Credential
 $user = "root";
 
-// Password Database Sources
+// Password Database Sources Server Credential
 $pass = "";
 
-// Database for system
+// Server Database for system
 $db = "";
+
+
 ?>
