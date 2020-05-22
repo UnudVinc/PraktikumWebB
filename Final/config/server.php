@@ -1,4 +1,5 @@
 <?php
+
 // Server Database Sources
 $host = "localhost";
 
