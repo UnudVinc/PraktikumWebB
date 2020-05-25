@@ -16,6 +16,7 @@ class database
 
     public function __construct()
     {
+        return $this->connection_status;
     }
 
     public function dbConnect()
