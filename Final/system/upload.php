@@ -1,7 +1,7 @@
 <?php
 
 
-namespace system;
+namespace System;
 
 
 class upload
@@ -9,20 +9,34 @@ class upload
     public $data_type;
     public $target_directory = 'uploads';
     public $file_extensions;
+    public $upload_status;
 
     public function __construct()
     {
+        $this->upload_status = 'processed';
+        $result = $this->file_checker();
+        if ($result == 'accepted')
+        {
+            $this->submit();
+        }
+        else if ($result == 'rejected')
+        {
+            $this->rejection();
+        }
     }
 
-    public function submit()
+    private function submit()
     {
+
     }
 
-    public function file_checker()
+    private function file_checker()
     {
+        return 'test';
     }
 
-    public function rejection()
+    private function rejection()
     {
+
     }
 }
