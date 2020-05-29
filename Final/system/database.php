@@ -16,7 +16,23 @@ class database
 
     public function __construct()
     {
-        return $this->connection_status;
+        require ($_ENV['ROOT'].'/config/server.php');
+        if ($_ENV['host'] != null)
+        {
+            $this->host = $_ENV['host'];
+        }
+        if ($_ENV['user'] != null)
+        {
+            $this->host = $_ENV['user'];
+        }
+        if ($_ENV['pass'] != null)
+        {
+            $this->host = $_ENV['pass'];
+        }
+        if ($_ENV['db'] != null)
+        {
+            $this->host = $_ENV['db'];
+        }
     }
 
     public function dbConnect()
@@ -28,5 +44,6 @@ class database
             $this->database,
             $this->port
         );
+        return $this->connection_status;
     }
 }

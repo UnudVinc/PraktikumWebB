@@ -1,18 +1,15 @@
 <?php
 
 // Server Database Sources
-$host = "localhost";
+$_ENV['host'] = "localhost";
 
 // User Database Sources Server Credential
-$user = "root";
+$_ENV['user'] = "root";
 
 // Password Database Sources Server Credential
-$pass = "";
+$_ENV['pass'] = "";
 
 // Server Database for system
-$db = "";
-
-// Environment
-$_SESSION['ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/PraktikumWebB/Final';
+$_ENV['db'] = "";
 
 ?>

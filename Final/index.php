@@ -1,8 +1,15 @@
 <?php
-require ('config/server.php');
-require ('system');
 
-return isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'],'/')) : '/';;
+// Global Variable for System Works
+$ENV['root'] = __DIR__;
+
+// System main gears
+foreach (glob("system/*.php") as $filename)
+{
+    include $filename;
+}
+
+$url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'],'/')) : '/';
 
 if ($url == '/')
 {
@@ -21,7 +28,7 @@ if ($url == '/')
 
     print $indexView->index();
 
-}else{
+} else {
 
 
     // This is not home page
@@ -33,7 +40,7 @@ if ($url == '/')
 
     // If a second part is added in the URI,
     // it should be a method
-    $requestedAction = isset($url[1])? $url[1] :'';
+    $requestedAction = isset($url[1]) ? $url[1] : '';
 
     // The remain parts are considered as
     // arguments of the method
@@ -41,40 +48,39 @@ if ($url == '/')
 
     // Check if controller exists. NB:
     // You have to do that for the model and the view too
-    $ctrlPath = __DIR__.'/Controllers/'.$requestedController.'_controller.php';
+    $ctrlPath = __DIR__ . '/Controllers/' . $requestedController . '_controller.php';
 
 
+    if (file_exists($ctrlPath)) {
 
-    if (file_exists($ctrlPath))
-    {
+        require_once __DIR__ . '/Models/' . $requestedController . '_model.php';
+        require_once __DIR__ . '/Controllers/' . $requestedController . '_controller.php';
+        require_once __DIR__ . '/Views/' . $requestedController . '_view.php';
 
-        require_once __DIR__.'/Models/'.$requestedController.'_model.php';
-        require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
-        require_once __DIR__.'/Views/'.$requestedController.'_view.php';
+        $modelName = ucfirst($requestedController) . 'Model';
+        $controllerName = ucfirst($requestedController) . 'Controller';
+        $viewName = ucfirst($requestedController) . 'View';
 
-        $modelName      = ucfirst($requestedController).'Model';
-        $controllerName = ucfirst($requestedController).'Controller';
-        $viewName       = ucfirst($requestedController).'View';
-
-        $controllerObj  = new $controllerName( new $modelName );
-        $viewObj        = new $viewName( $controllerObj, new $modelName );
+        $controllerObj = new $controllerName(new $modelName);
+        $viewObj = new $viewName($controllerObj, new $modelName);
 
 
         // If there is a method - Second parameter
-        if ($requestedAction != '')
-        {
+        if ($requestedAction != '') {
             // then we call the method via the view
             // dynamic call of the view
             print $viewObj->$requestedAction($requestedParams);
 
         }
 
-    }else{
+    } else {
 
         header('HTTP/1.1 404 Not Found');
-        die('404 - The file - '.$ctrlPath.' - not found');
+        die('404 - The file - ' . $ctrlPath . ' - not found');
         //require the 404 controller and initiate it
         //Display its view
     }
+
+}
 
 ?>
