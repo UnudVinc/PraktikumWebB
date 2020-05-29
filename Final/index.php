@@ -18,18 +18,7 @@ if ($url == '/')
     // Initiate the home controller
     // and render the home view
 
-    require_once __DIR__.'/Models/index_model.php';
-    require_once __DIR__.'/Controllers/index_controller.php';
-    require_once __DIR__.'/Views/index_view.php';
-
-    $indexModel = New IndexModel();
-    $indexController = New IndexController($indexModel);
-    $indexView = New IndexView($indexController, $indexModel);
-
-    print $indexView->index();
-
-} else {
-
+    require_once __DIR__.'/pages/welcome.php';
 
     // This is not home page
     // Initiate the appropriate controller

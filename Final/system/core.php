@@ -10,24 +10,16 @@ class core
     {
     }
 
-    public function url()
+    public function css($request)
     {
-
+        require_once ($_ENV['ROOT'].'/resources/css/'.$request);
     }
-
-    public function redirect()
+    public function js($request)
     {
+        require_once ($_ENV['ROOT'].'/resources/js/'.$request);
     }
-
-    public function call()
+    public function fonts($request)
     {
-    }
-
-    public function destroy()
-    {
-    }
-
-    public function remember()
-    {
+        require_once ($_ENV['ROOT'].'/resources/fonts/'.$request);
     }
 }
