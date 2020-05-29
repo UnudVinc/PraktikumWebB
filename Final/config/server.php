@@ -12,5 +12,7 @@ $pass = "";
 // Server Database for system
 $db = "";
 
+// Environment
+$_SESSION['ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/PraktikumWebB/Final';
 
 ?>

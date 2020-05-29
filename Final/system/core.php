@@ -10,6 +10,11 @@ class core
     {
     }
 
+    public function url()
+    {
+
+    }
+
     public function redirect()
     {
     }
